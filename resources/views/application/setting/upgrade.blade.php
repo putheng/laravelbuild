@@ -1,55 +1,32 @@
 @extends('layouts.dashboard')
 
 @section('content')
-	<div class="row">
-		<div class="col-lg-12">
-		<form action="{{ route('app.new') }}" method="POST">
-			@csrf
-			<div class="card card-contrast card-border-color card-border-color-primary">
-				<div class="card-header card-header-contrast card-header-featured text-left">
-					Create a new application
-				</div>
-				<div class="card-body">
-					
-					<div class="row">
-						<div class="col-md-4">
-							<div class="form-group pt-2">
-								<label for="inputName">Name</label>
-								<input class="form-control form-control-sm" id="inputName" type="text" placeholder="Your app name">
-							</div>
-						</div>
-						<div class="col-md-6">
-							<div class="form-group pt-2">
-								<label for="inputDescription">Description</label>
-								<input class="form-control form-control-sm" id="inputDescription" type="text" placeholder="Make a short description of your app">
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="form-group pt-2">
-								<label for="php">Select your application</label>
-								<select name="php_version" class="form-control form-control-sm">
-									<option value="7.0">Laravel</option>
-									<option value="6.5">WordPress</option>
-									<option value="7.2">Custom PHP App</option>
-								</select>
-							</div>
-						</div>
-
-						<div class="col-md-4">
-							<div class="form-group pt-2">
-								<label for="php">PHP Version</label>
-								<select name="php_version" class="form-control form-control-sm">
-									<option value="6.5">6.5</option>
-									<option value="7.0">7.0</option>
-									<option value="7.2">7.2</option>
-								</select>
-							</div>
-						</div>
-
-					</div>
-
-					<div class="row pricing-tables">
+<div class="page-head no-padding">
+	<h2 class="page-head-title">Your application name</h2>
+	<nav aria-label="breadcrumb" role="navigation">
+		<ol class="breadcrumb page-head-nav">
+			<li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Home</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('app.lists') }}">Applications</a></li>
+		</ol>
+	</nav>
+</div>
+<br>
+<div class="row">
+	<div class="col-12 col-lg-12">
+		<div class="card">
+			<div class="tab-container">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active show text-uppercase" href="#primary" data-toggle="tab" role="tab" aria-selected="false">
+							Upgrade
+						</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane active show" id="primary" role="tabpanel">
+						<h4>Select a plan</h4>
+						<p>Select a plan to upgrade your application.</p>
+						<div class="row pricing-tables">
 						<div class="col-lg-3">
 							<div class="pricing-table pricing-table-primary">
 								
@@ -133,14 +110,12 @@
 							</div>
 						</div>
 					</div>
-					<p>Please select your app size. You can always scale your app size whenever required</p>
-				</div>
-				<div class="card-header card-header-contrast card-header-featured">
-					<button type="submit" class="btn btn-success btn-lg">Create App</button>
+						
+						<input type="submit" value="Upgrade" class="btn btn-success btn-lg">
+					</div>
 				</div>
 			</div>
 		</div>
-		</form>
 	</div>
-
+</div>
 @endsection

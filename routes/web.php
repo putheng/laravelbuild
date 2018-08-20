@@ -53,21 +53,12 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 		Route::get('setting', 'SettingController@index')->name('setting');
 		Route::get('backup', 'BackupController@index')->name('backup');
 		Route::get('upgrade', 'SettingController@upgrade')->name('upgrade');
-		
-		// Apllication SSH Keys
-		Route::group(['prefix' => 'ssh'], function(){
-
-			Route::get('/', 'DeployController@index')->name('deploy');
-			Route::get('/generate', 'DeployController@generate')->name('generate');
-			Route::get('/view', 'DeployController@view')->name('ssh.view');
-
-		});
 
 		// Application SSL
 		Route::group(['prefix' => 'ssl', 'as' => 'ssl.'], function(){
 
 			Route::get('/', 'CertificateController@index')->name('index');
-			Route::get('/create', 'CertificateController@create')->name('create');
+			Route::get('/generate', 'CertificateController@generate')->name('create');
 
 		});
 
@@ -84,6 +75,15 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Account', 'as' => 'dashbo
 	Route::get('/billing', 'PaymentController@index')->name('billing');
 	Route::get('/password', 'PasswordController@index')->name('password');
 	
+	// SSH Keys
+	Route::group(['prefix' => 'ssh', 'as' => 'ssh.'], function(){
+
+		Route::get('/', 'SSHController@index')->name('index');
+		Route::get('/generate', 'SSHController@generate')->name('generate');
+		Route::get('/view', 'SSHController@view')->name('view');
+
+	});
+
 });
 
 

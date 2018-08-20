@@ -45,12 +45,6 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ route('app.manage.deploy') }}">
-									<i class="icon mdi mdi-chart-donut"></i>
-									<span>SSH Key</span>
-								</a>
-							</li>
-							<li>
 								<a href="{{ route('app.manage.backup') }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>Backup</span>
@@ -59,7 +53,7 @@
 							<li>
 								<a href="{{ route('app.manage.setting') }}">
 									<i class="icon mdi mdi-chart-donut"></i>
-									<span>Application Settings</span>
+									<span>Settings</span>
 								</a>
 							</li>
 							<li>
@@ -80,6 +74,12 @@
 							<a href="{{ route('dashboard.password') }}">
 								<i class="icon mdi mdi-lock"></i>
 								<span>Password</span>
+							</a>
+						</li>
+						<li>
+							<a href="{{ route('dashboard.ssh.index') }}">
+								<i class="icon mdi mdi-assignment-account"></i>
+								<span>SSH Keys</span>
 							</a>
 						</li>
 						<li>

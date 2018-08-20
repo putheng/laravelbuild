@@ -14,7 +14,7 @@ class ProjectController extends Controller
 
     public function detail()
     {
-    	return view('apps.detail');
+    	return view('application.detail');
     }
 
     public function store(Request $request)
@@ -28,4 +28,5 @@ class ProjectController extends Controller
 
         return back();
     }
+
 }
