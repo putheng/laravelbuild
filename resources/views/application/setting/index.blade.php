@@ -26,6 +26,11 @@
 							environments
 						</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link text-uppercase" href="#delete" data-toggle="tab" role="tab" aria-selected="true">
+							Delete
+						</a>
+					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active show" id="primary" role="tabpanel">
@@ -66,6 +71,22 @@
 
 
 								<input type="submit" value="SUBMIT" class="btn btn-primary">
+							</div>
+						</div>
+					</div>
+
+					<div class="tab-pane" id="delete" role="tabpanel">
+						<h4>Delete your application</h4>
+						<br>
+						<div class="row">
+							<div class="col-md-6">
+								<p><strong>appname</strong></p>
+								<div class="form-group">
+									<input type="text" class="form-control form-control-sm" placeholder="Enter your application name">
+								</div>
+
+
+								<input type="submit" value="DELETE" class="btn btn-danger">
 							</div>
 						</div>
 					</div>

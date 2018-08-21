@@ -66,43 +66,51 @@ git push -u origin master
 						<h4>Database Credentials</h4>
 						<p>Get credentials for manual connections to this database.</p>
 						
-						<table class="table table-bordered">
-							<tr>
-								<th>Host</th>
-								<td colspan="2">{{ $project->getDatabase()->host }}</td>
-							</tr>
-							<tr>
-								<th>Database</th>
-								<td>{{ $project->getDatabase()->dbname }}</td>
-								<td>
-									<a href="#" class="btn btn-sm btn-danger">
-										Empty
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<th>User</th>
-								<td>{{ $project->getDatabase()->username }}</td>
-								<td>
-									<a href="#" class="btn btn-sm btn-warning">
-										Reset
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<th>Password</th>
-								<td>{{ $project->getDatabase()->password }}</td>
-								<td>
-									<a href="#" class="btn btn-sm btn-warning">
-										Reset
-									</a>
-								</td>
-							</tr>
-							<tr>
-								<th>Port</th>
-								<td colspan="2">{{ $project->getDatabase()->port }}</td>
-							</tr>
-						</table>
+						@if($project->getDatabase()->count())
+
+							<table class="table table-bordered">
+								<tr>
+									<th>Host</th>
+									<td colspan="2">{{ $project->getDatabase()->first()->host }}</td>
+								</tr>
+								<tr>
+									<th>Database</th>
+									<td>{{ $project->getDatabase()->first()->dbname }}</td>
+									<td>
+										<a href="#" class="btn btn-sm btn-danger">
+											Empty
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>User</th>
+									<td>{{ $project->getDatabase()->first()->username }}</td>
+									<td>
+										<a href="#" class="btn btn-sm btn-warning">
+											Reset
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>Password</th>
+									<td>{{ $project->getDatabase()->first()->password }}</td>
+									<td>
+										<a href="#" class="btn btn-sm btn-warning">
+											Reset
+										</a>
+									</td>
+								</tr>
+								<tr>
+									<th>Port</th>
+									<td colspan="2">{{ $project->getDatabase()->first()->port }}</td>
+								</tr>
+							</table>
+						@else
+
+							<p>Database creating .. please refresh this page to see database credentials</p>
+
+						@endif
+
 					</div>
 				</div>
 			</div>

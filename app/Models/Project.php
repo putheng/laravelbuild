@@ -21,7 +21,7 @@ class Project extends Model
 
     public function getDatabase()
     {
-        return Database::where('project_id', $this->id)->first();
+        return Database::where('project_id', $this->id);
     }
 
     public function user()
@@ -31,7 +31,7 @@ class Project extends Model
 
     public function plan()
     {
-    	return $this->hasOne(Plan::class);
+    	return $this->belongsTo(Plan::class);
     }
     
 }
