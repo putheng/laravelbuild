@@ -11,90 +11,57 @@
 			</tr>
 		</thead>
 		<tbody>
+			@if($projects->count())
+
+				@foreach($projects as $project)
+					<tr class="primary">
+						<td class="user-avatar cell-detail user-info">
+							<img src="/images/avatar.png" alt="Avatar">
+							<span>{{ $project->name }}</span>
+							<span class="cell-detail-description">
+							{{ $project->description }}
+							</span>
+						</td>
+						<td class="milestone">
+							<span class="completed">0.9 GB / 1 GB</span>
+							<span class="version">...</span>
+							<div class="progress">
+								<div class="progress-bar progress-bar-primary" style="width: 45%;">
+									
+								</div>
+							</div>
+						</td>
+						<td class="milestone">
+							<span class="completed">10,000 / 10,000 rows</span>
+							<span class="version">...</span>
+							<div class="progress">
+								<div class="progress-bar progress-bar-primary" style="width: 45%;">
+									
+								</div>
+							</div>
+						</td>
+						<td class="cell-detail">
+							<span>master</span>
+							<span class="cell-detail-description">63e8ec3</span>
+						</td>
+						<td class="cell-detail">
+							<span>May 6, 2018</span>
+							<span class="cell-detail-description">8:30</span>
+						</td>
+						<td class="text-right">
+							<div class="btn-group btn-hspace">
+								<a class="btn btn-secondary dropdown-toggle" href="{{ route('app.manage.detail', $project) }}">
+									Manage 
+								</a>
+							</div>
+						</td>
+					</tr>
+				@endforeach
+			@else
 			<tr>
-				<td class="user-avatar cell-detail user-info">
-					<img src="/images/avatar.png" alt="Avatar">
-					<span>App name</span>
-					<span class="cell-detail-description">
-					App description
-					</span>
-				</td>
-				<td class="milestone">
-					<span class="completed">0.9 GB / 1 GB</span>
-					<span class="version">...</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" style="width: 45%;">
-							
-						</div>
-					</div>
-				</td>
-				<td class="milestone">
-					<span class="completed">10,000 / 10,000 rows</span>
-					<span class="version">...</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" style="width: 45%;">
-							
-						</div>
-					</div>
-				</td>
-				<td class="cell-detail">
-					<span>master</span>
-					<span class="cell-detail-description">63e8ec3</span>
-				</td>
-				<td class="cell-detail">
-					<span>May 6, 2018</span>
-					<span class="cell-detail-description">8:30</span>
-				</td>
-				<td class="text-right">
-					<div class="btn-group btn-hspace">
-						<a class="btn btn-secondary dropdown-toggle" href="{{ route('app.manage.detail') }}">
-							Manage 
-						</a>
-					</div>
-				</td>
+				<td colspan="6">No any application <a href="{{ route('app.new') }}">Create an application</a></td>
 			</tr>
-			<tr class="primary">
-				<td class="user-avatar cell-detail user-info">
-					<img src="/images/avatar.png" alt="Avatar">
-					<span>App name</span>
-					<span class="cell-detail-description">
-					App description
-					</span>
-				</td>
-				<td class="milestone">
-					<span class="completed">0.9 GB / 1 GB</span>
-					<span class="version">...</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" style="width: 45%;">
-							
-						</div>
-					</div>
-				</td>
-				<td class="milestone">
-					<span class="completed">10,000 / 10,000 rows</span>
-					<span class="version">...</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" style="width: 45%;">
-							
-						</div>
-					</div>
-				</td>
-				<td class="cell-detail">
-					<span>master</span>
-					<span class="cell-detail-description">63e8ec3</span>
-				</td>
-				<td class="cell-detail">
-					<span>May 6, 2018</span>
-					<span class="cell-detail-description">8:30</span>
-				</td>
-				<td class="text-right">
-					<div class="btn-group btn-hspace">
-						<a class="btn btn-secondary dropdown-toggle" href="">
-							Manage 
-						</a>
-					</div>
-				</td>
-			</tr>
+			@endif
 		</tbody>
 	</table>
 </div>

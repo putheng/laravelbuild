@@ -40,7 +40,7 @@
 						<br>
 						<p>Create a Certificate Signing Request (CSR) on the server by providing information about your application.<br> This will override any existing CSR and private key generated earlier.</p>
 						<br>
-						<a href="{{ route('app.manage.ssl.create') }}" class="btn btn-primary text-uppercase">create csr</a>
+						<a href="{{ route('app.manage.ssl.create', $project) }}" class="btn btn-primary text-uppercase">create csr</a>
 						<br><br>
 					@else
 
@@ -50,7 +50,7 @@
 								<p>Create a Certificate Signing Request (CSR) on the server by providing information about your application.<br> This will override any existing CSR and private key generated earlier.</p>
 								
 								<br>
-								<a class="btn btn-warning text-uppercase" href="{{ route('app.manage.ssl.create') }}">re-create csr</a>
+								<a class="btn btn-warning text-uppercase" href="{{ route('app.manage.ssl.create', $project) }}">re-create csr</a>
 								<br><br>
 							</div>
 						</div>
@@ -65,7 +65,7 @@
 						@if(false)
 							<a href="#" class="btn btn-info text-uppercase">download csr</a>
 						@else
-							<a href="{{ route('app.manage.ssl.create') }}" class="btn btn-primary text-uppercase">create csr</a>
+							<a href="{{ route('app.manage.ssl.create', $project) }}" class="btn btn-primary text-uppercase">create csr</a>
 						@endif
 						<br><br>
 					</div>
@@ -78,7 +78,7 @@
 						@if(false)
 							<a href="#" class="btn btn-success text-uppercase">install csr</a>
 						@else
-							<a href="{{ route('app.manage.ssl.create') }}" class="btn btn-primary text-uppercase">create csr</a>
+							<a href="{{ route('app.manage.ssl.create', $project) }}" class="btn btn-primary text-uppercase">create csr</a>
 						@endif
 						<br><br>
 					</div>

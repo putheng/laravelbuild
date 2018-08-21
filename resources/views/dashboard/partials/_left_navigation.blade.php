@@ -18,16 +18,16 @@
 								<span>New App</span>
 							</a>
 						</li>
-						@if(true)
+						@if(isset($project))
 							<li class="divider">Application</li>
 							<li>
-								<a href="{{ route('app.manage.detail') }}">
+								<a href="{{ route('app.manage.detail', $project) }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>Access Details</span>
 								</a>
 							</li>
 							<li>
-								<a href="{{ route('app.manage.domain') }}">
+								<a href="{{ route('app.manage.domain', $project) }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>Domain</span>
 								</a>
@@ -39,25 +39,25 @@
 								</a>
 							</li>
 							<li>
-								<a href="{{ route('app.manage.ssl.index') }}">
+								<a href="{{ route('app.manage.ssl.index', $project) }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>SSL Certificate</span>
 								</a>
 							</li>
 							<li>
-								<a href="{{ route('app.manage.backup') }}">
+								<a href="{{ route('app.manage.backup', $project) }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>Backup</span>
 								</a>
 							</li>
 							<li>
-								<a href="{{ route('app.manage.setting') }}">
+								<a href="{{ route('app.manage.setting', $project) }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>Settings</span>
 								</a>
 							</li>
 							<li>
-								<a href="{{ route('app.manage.upgrade') }}">
+								<a href="{{ route('app.manage.upgrade', $project) }}">
 									<i class="icon mdi mdi-chart-donut"></i>
 									<span>Upgrade</span>
 								</a>

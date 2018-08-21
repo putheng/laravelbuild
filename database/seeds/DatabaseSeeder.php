@@ -11,6 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->call(PlanPHP_VserionSeeder::class);
+        $this->call(PlanTableSeeder::class);
     }
 }

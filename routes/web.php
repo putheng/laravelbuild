@@ -44,10 +44,11 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 
 	Route::get('/new', 'ProjectController@new')->name('new');
 	Route::post('/new', 'ProjectController@store');
+	
 	Route::get('/lists', 'ProjectController@lists')->name('lists');
 
 	// Manage application
-	Route::group(['prefix' => 'manage', 'as' => 'manage.'], function(){
+	Route::group(['prefix' => 'manage/{project}', 'as' => 'manage.'], function(){
 
 		Route::get('domain', 'DomainController@index')->name('domain');
 		Route::get('setting', 'SettingController@index')->name('setting');
@@ -63,7 +64,7 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 		});
 
 		// View application access detail 
-		Route::get('/id/detail', 'ProjectController@detail')->name('detail');
+		Route::get('detail', 'ProjectController@detail')->name('detail');
 	});
 
 });

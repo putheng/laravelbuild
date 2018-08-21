@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers\Project;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SettingController extends Controller
 {
-    public function index()
+    public function index(Project $project)
     {
-    	return view('application.setting.index');
+    	return view('application.setting.index', compact('project'));
     }
 
-    public function upgrade()
+    public function upgrade(Project $project)
     {
-    	return view('application.setting.upgrade');
+    	return view('application.setting.upgrade', compact('project'));
     }
 }

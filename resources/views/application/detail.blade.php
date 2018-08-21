@@ -35,11 +35,11 @@
 
 								<br>
 								<h4>Application Url</h4>
-								<a href="#">https://myproject.laravelbuild.com</a>
+								<a href="https://{{ $project->directory }}.laravelbuildapp.com" target="_blank">https://{{ $project->directory }}.laravelbuildapp.com</a>
 								<br><br>
 								<h4>Git repository</h4>
 <pre>
-git@github.com:putheng/api.git
+{{ str_slug(request()->user()->name) }}@git.laravelbuild.com:{{ $project->gitname }}.git
 </pre>
 <br>
 <h4>Create a new repository on the command line</h4>
@@ -69,11 +69,11 @@ git push -u origin master
 						<table class="table table-bordered">
 							<tr>
 								<th>Host</th>
-								<td colspan="2">db.putheng.com</td>
+								<td colspan="2">{{ $project->getDatabase()->host }}</td>
 							</tr>
 							<tr>
 								<th>Database</th>
-								<td>{{ uniqid() }}</td>
+								<td>{{ $project->getDatabase()->dbname }}</td>
 								<td>
 									<a href="#" class="btn btn-sm btn-danger">
 										Empty
@@ -82,7 +82,7 @@ git push -u origin master
 							</tr>
 							<tr>
 								<th>User</th>
-								<td>{{ uniqid() }}</td>
+								<td>{{ $project->getDatabase()->username }}</td>
 								<td>
 									<a href="#" class="btn btn-sm btn-warning">
 										Reset
@@ -91,7 +91,7 @@ git push -u origin master
 							</tr>
 							<tr>
 								<th>Password</th>
-								<td>{{ str_random(60) }}</td>
+								<td>{{ $project->getDatabase()->password }}</td>
 								<td>
 									<a href="#" class="btn btn-sm btn-warning">
 										Reset
@@ -100,7 +100,7 @@ git push -u origin master
 							</tr>
 							<tr>
 								<th>Port</th>
-								<td colspan="2">3306</td>
+								<td colspan="2">{{ $project->getDatabase()->port }}</td>
 							</tr>
 						</table>
 					</div>

@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers\Project;
 
+use App\User;
+use App\Models\Plan;
+use App\Models\Project;
+use App\Jobs\{ProcessHost, ProcessDatabase};
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Project\StoreProjectFormRequest;
 
 class ProjectController extends Controller
 {
@@ -12,21 +17,46 @@ class ProjectController extends Controller
     	return view('application.new');
     }
 
-    public function detail()
+    public function detail(Project $project, Request $request)
     {
-    	return view('application.detail');
+    	return view('application.detail', compact('project'));
     }
 
-    public function store(Request $request)
+    public function store(StoreProjectFormRequest $request)
     {
-        $name = $request->name;
-        $description = $request->description;
-        $app = $request->app_version;
-        $php = $request->php_version;
 
-    	//ProcessHost::dispatch($name, $description, $app);
+        $username = str_slug($request->user()->name);
+        $appname = str_slug($request->name);
+        $apptyle = $request->app_version;
 
-        return back();
+        $project = new Project;
+
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->user()->associate($request->user());
+
+        $public = '';
+
+        $project->subdomain = $appname;
+        $project->gitname = $appname;
+        $project->plan_id = $request->plan;
+
+        $project->php_id = $request->php_version;
+        $project->type = $apptyle;
+        $project->directory = $appname . '-'. $username;
+
+        $project->save();
+
+        if($apptyle == 'laravel'){
+            $public = 'public';
+        }
+
+        ProcessHost::dispatch($username, $appname, $public);
+
+        ProcessDatabase::dispatch(auth()->id(), $project->id);
+
+        return redirect()->route('app.manage.detail', $project);
+        
     }
 
 }
