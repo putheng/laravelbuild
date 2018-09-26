@@ -50,17 +50,15 @@ os.system("sudo service nginx restart")
 ### Setup git
 os.system("sudo mkdir -p /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git")
 
-os.system("cd /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git")
+os.system("git init --bare /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git")
 
-os.system("git init --bare")
+os.system("touch /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
 
-os.system("touch hooks/post-receive")
+os.system("echo \"#!/bin/sh\" >> /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
 
-os.system("echo \"#!/bin/sh\" >> hooks/post-receive")
+os.system("echo \"git --work-tree=/homes/"+ sys.argv[1] +"/"+ sys.argv[2] +" --git-dir=/home/"+ sys.argv[1] +"/"+ sys.argv[2] +".git checkout -f\" >> /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
 
-os.system("echo \"git --work-tree=/homes/"+ sys.argv[1] +"/"+ sys.argv[2] +" --git-dir=/home/"+ sys.argv[1] +"/"+ sys.argv[2] +".git checkout -f\" >> hooks/post-receive")
-
-os.system("chmod +x hooks/post-receive")
+os.system("chmod +x /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
 
 
 

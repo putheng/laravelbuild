@@ -22,6 +22,11 @@ class ProjectController extends Controller
     	return view('application.detail', compact('project'));
     }
 
+    public function StartUp()
+    {
+        return $this->Programmer();
+    }
+
     public function store(StoreProjectFormRequest $request)
     {
 
