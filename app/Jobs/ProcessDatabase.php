@@ -8,6 +8,8 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 
+use App\Models\Plan;
+
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 
@@ -35,8 +37,15 @@ class ProcessDatabase implements ShouldQueue
      */
     public function handle()
     {
-        
-        $process = new Process("python3.5 /home/vagrant/sites/laravelbuild/app/exec/test.py {$this->userid} {$this->appid}");
-        $process->run();
+        $plan = new Plan;
+
+        $plan->name = 'xxx';
+        $plan->price = '10';
+        $plan->live = 1;
+
+        $plan->save();
+
+        //$process = new Process("python3.5 /home/vagrant/sites/laravelbuild/app/exec/test.py {$this->userid} {$this->appid}");
+        //$process->run();
     }
 }
