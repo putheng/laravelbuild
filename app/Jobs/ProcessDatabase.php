@@ -36,7 +36,7 @@ class ProcessDatabase implements ShouldQueue
     public function handle()
     {
         
-        $process = new Process("python3.5 /home/vagrant/sites/laravelbuild/app/exec/mysql.py {$this->userid} {$this->appid}");
+        $process = new Process("python3.5 /home/vagrant/sites/laravelbuild/app/exec/test.py {$this->userid} {$this->appid}");
         $process->run();
     }
 }
