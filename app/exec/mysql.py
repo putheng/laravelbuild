@@ -12,34 +12,34 @@ def random_string(string_length=10):
 dbuser = random_string()
 dbname = random_string(15)
 userps = random_string(25)
-dbhost = "database.laravelbuild.com"
+dbhost = "laravelbuild.com"
 dbport = "3306"
 
-createdb = "mysql -u root -e \"CREATE DATABASE "+ dbname +"\"; "
+createdb = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"CREATE DATABASE "+ dbname +"\"; "
 
-createlocal = "mysql -u root -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
+createlocal = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
 
-createremote = "mysql -u root -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
+createremote = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantlocal = "mysql -u root -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
+grantlocal = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
 
-grantremote = "mysql -u root -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
+grantremote = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
 
-flush = "mysql -u root -e \"FLUSH PRIVILEGES\"; "
+flush = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"FLUSH PRIVILEGES\"; "
 
-#os.system(createdb)
-#os.system(createlocal)
-#os.system(createremote)
-#os.system(grantlocal)
-#os.system(grantremote)
-#os.system(flush)
+os.system(createdb)
+os.system(createlocal)
+os.system(createremote)
+os.system(grantlocal)
+os.system(grantremote)
+os.system(flush)
 
-insert = "mysql -u'homestead' -p'secret' -e \"INSERT INTO laravelbuild.databases (user_id, project_id, username, password, dbname, host, port) VALUES ('"+ sys.argv[1] +"', '"+ sys.argv[2] +"', '"+ dbuser +"', '"+ userps +"', '"+ dbname +"', '"+ dbhost +"', '"+ dbport +"') \"; "
+insert = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"INSERT INTO build_database.databases (user_id, project_id, username, password, dbname, host, port) VALUES ('"+ sys.argv[1] +"', '"+ sys.argv[2] +"', '"+ dbuser +"', '"+ userps +"', '"+ dbname +"', '"+ dbhost +"', '"+ dbport +"') \"; "
 
 os.system(insert)
 
 #print("MySQL user created." + insert)
-print("Databse :   "+  dbname)
-print("Username:   "+ dbuser)
-print("Password:   "+ userps)
+#print("Databse :   "+  dbname)
+#print("Username:   "+ dbuser)
+#print("Password:   "+ userps)
 

@@ -15,7 +15,7 @@ server_parent_dir = "/homes/"+ sys.argv[1];
 domain_dir = sys.argv[2]
 
 ## Domain name
-domain = sys.argv[2] +"-"+ sys.argv[1] +".laravelbuild.net"
+domain = sys.argv[2] +"-"+ sys.argv[1] +".laravelbuild.com"
 
 ## Chceck and set name of the public directory.
 public_dir = sys.argv[3]
