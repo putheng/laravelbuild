@@ -35,11 +35,11 @@
 
 								<br>
 								<h4>Application Url</h4>
-								<a href="https://{{ $project->directory }}.laravelbuildapp.com" target="_blank">https://{{ $project->directory }}.laravelbuildapp.com</a>
+								<a href="http://{{ $project->directory }}.laravelbuild.com" target="_blank">http://{{ $project->directory }}.laravelbuild.com</a>
 								<br><br>
 								<h4>Git repository</h4>
 <pre>
-{{ str_slug(request()->user()->name) }}@git.laravelbuild.com:{{ $project->gitname }}.git
+git@laravelbuild.com:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
 </pre>
 <br>
 <h4>Create a new repository on the command line</h4>
