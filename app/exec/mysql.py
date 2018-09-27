@@ -15,17 +15,17 @@ userps = random_string(25)
 dbhost = "laravelbuild.com"
 dbport = "3306"
 
-createdb = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"CREATE DATABASE "+ dbname +"\"; "
+createdb = "mysql -u'root' -p'root' -e \"CREATE DATABASE "+ dbname +"\"; "
 
-createlocal = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
+createlocal = "mysql -u'root' -p'root' -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
 
-createremote = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
+createremote = "mysql -u'root' -p'root' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantlocal = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
+grantlocal = "mysql -u'root' -p'root' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
 
-grantremote = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
+grantremote = "mysql -u'root' -p'root' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
 
-flush = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"FLUSH PRIVILEGES\"; "
+flush = "mysql -u'root' -p'root' -e \"FLUSH PRIVILEGES\"; "
 
 os.system(createdb)
 os.system(createlocal)
