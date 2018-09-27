@@ -80,7 +80,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Account', 'as' => 'dashbo
 	Route::group(['prefix' => 'ssh', 'as' => 'ssh.'], function(){
 
 		Route::get('/', 'SSHController@index')->name('index');
-		Route::get('/generate', 'SSHController@generate')->name('generate');
+		Route::get('/add', 'SSHController@generate')->name('generate');
 		Route::get('/view', 'SSHController@view')->name('view');
 
 	});
