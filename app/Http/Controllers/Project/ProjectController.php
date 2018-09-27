@@ -57,8 +57,7 @@ class ProjectController extends Controller
         }
 
         ProcessDatabase::dispatch(auth()->id(), $project->id);
-
-        //ProcessHost::dispatch($username, $appname, $public);
+        ProcessHost::dispatch($username, $appname, $public);
 
         return redirect()->route('app.manage.detail', $project);
         
