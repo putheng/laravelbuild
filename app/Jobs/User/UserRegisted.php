@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Jobs\User;
-use App]
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
@@ -33,7 +33,7 @@ class UserRegisted implements ShouldQueue
      */
     public function handle()
     {
-        $process = new Process("python3.5 /var/www/html/default/app/exec/user.py {$this->user->username}");
+        $process = new Process("python3.5 /home/vagrant/sites/laravelbuild/app/exec/user.py {$this->user->username}");
         $process->run();
     }
 }
