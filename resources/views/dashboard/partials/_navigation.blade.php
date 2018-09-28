@@ -19,7 +19,9 @@
 			<a class="dropdown-item" href="{{ route('app.new') }}">
 				<span class="icon mdi mdi-playlist-plus"></span>New App
 			</a>
-			<a class="dropdown-item" href="{{ route('login') }}">
+			<a class="dropdown-item" href="{{ route('logout') }}"
+                              onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();">
 				<span class="icon mdi mdi-power"></span>Logout
 			</a>
         </div>
