@@ -3,7 +3,7 @@ import os
 import sys
 #sys.argv[1]
 
-os.system("mkdir "+ sys.argv[1])
+os.system("mkdir ok")
 #os.system('useradd -m -d /home/'+ sys.argv[1] +' '+ sys.argv[1] +'');
 #os.system("usermod -a -G git "+ sys.argv[1])
 
