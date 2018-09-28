@@ -24,7 +24,7 @@
                   {{ csrf_field() }}
                   <span class="splash-title pb-4">Sign Up</span>
                   <div class="form-group">
-                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" placeholder="Username" autocomplete="off">
+                    <input class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" type="text" name="name" placeholder="Username" value="{{ old('name') }}" autocomplete="off">
 
                     @if($errors->has('name'))
                       <p class="text-danger">{{ $errors->first('name') }}</p>
@@ -32,7 +32,7 @@
                   </div>
 
                   <div class="form-group">
-                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="email" name="email" placeholder="E-mail" autocomplete="off">
+                    <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" name="email" placeholder="E-mail" value="{{ old('email') }}" autocomplete="off">
                     
                     @if($errors->has('email'))
                       <p class="text-danger">{{ $errors->first('email') }}</p>
@@ -40,7 +40,7 @@
                   </div>
 
                   <div class="form-group">
-                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" placeholder="password" autocomplete="off">
+                    <input class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" name="password" value="{{ old('password') }}" placeholder="password" autocomplete="off">
                     
                     @if($errors->has('password'))
                       <p class="text-danger">{{ $errors->first('password') }}</p>
@@ -54,7 +54,13 @@
                       <p class="text-danger">{{ $errors->first('password_confirmation') }}</p>
                     @endif
                   </div>
-                  
+
+                  <div class="form-group pt-1 mb-5">
+                    <label class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a>.</span>
+                    </label>
+                  </div>
+
                   <div class="form-group pt-2">
                     <button class="btn btn-block btn-primary btn-xl" type="submit">Sign Up</button>
                   </div>
@@ -68,12 +74,6 @@
                     <div class="col-6">
                       <button class="btn btn-lg btn-block btn-social btn-google-plus btn-color" type="button"><i class="mdi mdi-google icon icon-left"></i>Google</button>
                     </div>
-                  </div>
-
-                  <div class="form-group pt-3 mb-3">
-                    <label class="custom-control custom-checkbox">
-                    <input class="custom-control-input" type="checkbox"><span class="custom-control-label">By creating an account, you agree the <a href="#">terms and conditions</a>.</span>
-                    </label>
                   </div>
 
                 </form>

@@ -40,7 +40,7 @@ Route::group(['namespace' => 'Auth', 'prefix' => 'auth'], function(){
 });
 
 //Application
-Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.'], function(){
+Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.', 'middleware' => 'auth'], function(){
 
 	Route::get('/new', 'ProjectController@new')->name('new');
 	Route::post('/new', 'ProjectController@store');
@@ -70,7 +70,7 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 });
 
 // Account setting
-Route::group(['prefix' => 'dashboard', 'namespace' => 'Account', 'as' => 'dashboard.'], function(){
+Route::group(['prefix' => 'dashboard', 'namespace' => 'Account', 'as' => 'dashboard.', 'middleware' => 'auth'], function(){
 
 	Route::get('/', 'DashboardController@index')->name('index');
 	Route::get('/billing', 'PaymentController@index')->name('billing');
