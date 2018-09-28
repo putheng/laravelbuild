@@ -17,18 +17,20 @@ class ProcessHost implements ShouldQueue
 
     protected $username,
             $appname,
-            $public;
+            $public,
+            $php;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($username, $appname, $public)
+    public function __construct($username, $appname, $public, $php)
     {
         $this->username = $username;
         $this->appname = $appname;
         $this->public = $public;
+        $this->php = $php;
     }
 
     /**
@@ -38,7 +40,21 @@ class ProcessHost implements ShouldQueue
      */
     public function handle()
     {
-        $process = new Process("python3.5 /var/www/html/default/app/exec/setup.py {$this->username} {$this->appname} {$this->public}");
+        $phpv = '';
+
+        if($this->php == '1'){
+            $phpv = 'unix:/var/run/php/php7.2-fpm.sock';
+        }elseif($this->php == '2'){
+            $phpv = 'unix:/var/run/php/php7.1-fpm.sock';
+        }elseif($this->php == '3'){
+            $phpv = 'unix:/var/run/php/php7.0-fpm.sock';
+        }elseif($this->php == '4'){
+            $phpv = 'unix:/var/run/php/php5.6-fpm.sock';
+        }elseif($this->php == '9'){
+            $phpv = 'fastcgi_pass   127.0.0.1:9000;';
+        }
+
+        $process = new Process("python3.5 /var/www/html/default/app/exec/setup.py {$this->username} {$this->appname} {$this->public} {$phpv}");
         $process->run();
     }
 }

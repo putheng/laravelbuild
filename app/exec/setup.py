@@ -37,7 +37,7 @@ file_object.close()
 
 ## Creating Virtual Host File
 host_file = open("/tmp/"+domain_dir, "w")
-host_file.write("server {\n\tlisten 80;\n\n\troot "+ server_parent_dir +"/"+ domain_dir +"/"+ public_dir +";\n\tindex index.php index.html;\n\n\tserver_name "+ domain +";\n\n\tlocation ~* \.php$ {\n\t\tfastcgi_pass unix:/var/run/php/php7.1-fpm.sock;\n\t\tfastcgi_index	index.php;\n\t\tinclude			fastcgi_params;\n\t\tfastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;\n\t\tfastcgi_param   SCRIPT_NAME        $fastcgi_script_name;\n\t}\n}")
+host_file.write("server {\n\tlisten 80;\n\n\troot "+ server_parent_dir +"/"+ domain_dir +"/"+ public_dir +";\n\tindex index.php index.html;\n\n\tserver_name "+ domain +";\n\n\tlocation ~* \.php$ {\n\t\tfastcgi_pass "+ sys.argv[4] +";\n\t\tfastcgi_index	index.php;\n\t\tinclude			fastcgi_params;\n\t\tfastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;\n\t\tfastcgi_param   SCRIPT_NAME        $fastcgi_script_name;\n\t}\n}")
 host_file.close()
 os.system("sudo mv \"/tmp/"+ domain_dir +"\" \"/etc/nginx/sites-available/\"")
 
