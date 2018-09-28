@@ -51,7 +51,7 @@ class ProcessHost implements ShouldQueue
         }elseif($this->php == '4'){
             $phpv = 'unix:/var/run/php/php5.6-fpm.sock';
         }elseif($this->php == '9'){
-            $phpv = 'fastcgi_pass   127.0.0.1:9000;';
+            $phpv = '127.0.0.1:9000;';
         }
 
         $process = new Process("python3.5 /var/www/html/default/app/exec/setup.py {$this->username} {$this->appname} {$this->public} {$phpv}");
