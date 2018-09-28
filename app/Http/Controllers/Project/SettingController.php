@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Project;
 
 use App\Models\Project;
+use App\Jobs\ProjectDestroy;
+use App\Rules\ProjectExists;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -15,7 +17,17 @@ class SettingController extends Controller
 
     public function destroy(Request $request, Project $project)
     {
-    	dd($request->appname);
+    	$this->validate($request, [
+    		'appname' => [
+    			'required',
+    			new ProjectExists($request->appname, $project),
+    		]
+    	],['appname.required' => 'Please enter appname to delete!']
+    	);
+
+    	ProjectDestroy::dispatch($project);
+
+    	return redirect()->route('dashboard.index')->withSuccess('Application was deleted.');
     }
 
     public function upgrade(Project $project)

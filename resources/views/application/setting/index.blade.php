@@ -10,6 +10,7 @@
 		</ol>
 	</nav>
 </div>
+
 <br>
 <div class="row">
 	<div class="col-12 col-lg-12">
@@ -17,7 +18,7 @@
 			<div class="tab-container">
 				<ul class="nav nav-tabs" role="tablist">
 					<li class="nav-item">
-						<a class="nav-link active show text-uppercase" href="#primary" data-toggle="tab" role="tab" aria-selected="false">
+						<a class="nav-link {{ $errors->has('appname') ? ' has-error' : 'active show' }} text-uppercase" href="#primary" data-toggle="tab" role="tab" aria-selected="false">
 							Application settings
 						</a>
 					</li>
@@ -27,13 +28,13 @@
 						</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link text-uppercase" href="#delete" data-toggle="tab" role="tab" aria-selected="true">
+						<a class="nav-link {{ $errors->has('appname') ? ' active show' : '' }} text-uppercase" href="#delete" data-toggle="tab" role="tab" aria-selected="true">
 							Delete
 						</a>
 					</li>
 				</ul>
 				<div class="tab-content">
-					<div class="tab-pane active show" id="primary" role="tabpanel">
+					<div class="tab-pane {{ $errors->has('appname') ? ' has-error' : 'active show' }}" id="primary" role="tabpanel">
 						<h4>Configure several application specific settings for your web app.</h4>
 
 						<div class="row">
@@ -75,16 +76,19 @@
 						</div>
 					</div>
 
-					<div class="tab-pane" id="delete" role="tabpanel">
+					<div class="tab-pane{{ $errors->has('appname') ? ' active show' : '' }}" id="delete" role="tabpanel">
 						<h4>Delete your application</h4>
 						<br>
 						<div class="row">
 							<div class="col-md-6">
 							<form action="{{ route('app.manage.destroy', $project) }}" method="post">
 								@csrf
-								<p><strong>{{ $project->name }}</strong></p>
 								<div class="form-group">
-									<input name="appname" type="text" class="form-control form-control-sm" placeholder="Enter your application name">
+									<label class="label-control">{{ $project->name }}</label>
+									<input value="{{ old('appname') }}" name="appname" type="text" class="form-control form-control-sm{{ $errors->has('appname') ? ' is-invalid' : '' }}" placeholder="Enter your application name">
+									@if($errors->has('appname'))
+										<br><span class="text-danger">{{ $errors->first('appname') }}</span>
+									@endif
 								</div>
 
 

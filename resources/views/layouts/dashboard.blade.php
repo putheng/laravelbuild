@@ -19,6 +19,7 @@
     @include('dashboard.partials._left_navigation')
     <div class="be-content">
       	<div class="main-content container-fluid">
+          @include('dashboard.partials._alert')
       		@yield('content')
       	</div>
     </div>
