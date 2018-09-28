@@ -59,7 +59,7 @@
 						<br>
 
 						<br>
-						<a href="{{ route('dashboard.ssh.generate') }}" class="btn btn-success btn-lg text-uppercase">add ssh keys </a>
+						<a href="{{ route('dashboard.ssh.generate') }}" class="btn btn-success btn-lg text-uppercase">generate ssh keys </a>
 						<br><br>
 						<br>
 
