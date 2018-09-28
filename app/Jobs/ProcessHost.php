@@ -40,7 +40,7 @@ class ProcessHost implements ShouldQueue
      */
     public function handle()
     {
-        $phpv = '';
+        $phpv = 'unix:/var/run/php/php7.2-fpm.sock';
 
         if($this->php == '1'){
             $phpv = 'unix:/var/run/php/php7.2-fpm.sock';

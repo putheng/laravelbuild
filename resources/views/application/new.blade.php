@@ -48,11 +48,9 @@
 							<div class="form-group pt-2">
 								<label for="php">PHP Version</label>
 								<select name="php_version" class="form-control form-control-sm{{ $errors->has('php_version') ? ' is-invalid': '' }}">
-									<option value="1">7.2</option>
-									<option value="2">7.1</option>
-									<option value="3">7.0</option>
-									<option value="4">6.5</option>
-									<option value="9">HHVM</option>
+								@foreach(App\Models\Version::get() as $phpv)
+									<option value="{{ $phpv->id }}">{{ $phpv->name }}</option>
+								@endforeach
 								</select>
 							</div>
 						</div>

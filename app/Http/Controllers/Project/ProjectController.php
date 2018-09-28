@@ -30,7 +30,7 @@ class ProjectController extends Controller
     public function store(StoreProjectFormRequest $request)
     {
 
-        $username = str_slug($request->user()->name);
+        $username = str_slug($request->user()->username);
         $appname = str_slug($request->name);
         $apptyle = $request->app_version;
 

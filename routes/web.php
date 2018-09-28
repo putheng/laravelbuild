@@ -51,7 +51,10 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 	Route::group(['prefix' => 'manage/{project}', 'as' => 'manage.'], function(){
 
 		Route::get('domain', 'DomainController@index')->name('domain');
+
 		Route::get('setting', 'SettingController@index')->name('setting');
+		Route::post('setting/delete/', 'SettingController@destroy')->name('destroy');
+
 		Route::get('backup', 'BackupController@index')->name('backup');
 		Route::get('upgrade', 'SettingController@upgrade')->name('upgrade');
 

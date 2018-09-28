@@ -80,13 +80,16 @@
 						<br>
 						<div class="row">
 							<div class="col-md-6">
-								<p><strong>appname</strong></p>
+							<form action="{{ route('app.manage.destroy', $project) }}" method="post">
+								@csrf
+								<p><strong>{{ $project->name }}</strong></p>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-sm" placeholder="Enter your application name">
+									<input name="appname" type="text" class="form-control form-control-sm" placeholder="Enter your application name">
 								</div>
 
 
 								<input type="submit" value="DELETE" class="btn btn-danger">
+							</form>
 							</div>
 						</div>
 					</div>

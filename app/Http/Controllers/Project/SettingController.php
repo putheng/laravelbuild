@@ -13,6 +13,11 @@ class SettingController extends Controller
     	return view('application.setting.index', compact('project'));
     }
 
+    public function destroy(Request $request, Project $project)
+    {
+    	dd($request->appname);
+    }
+
     public function upgrade(Project $project)
     {
     	return view('application.setting.upgrade', compact('project'));
