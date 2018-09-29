@@ -32,7 +32,7 @@ class ProjectDestroy implements ShouldQueue
     {
         //delete database
         //delete database user: % and localhost
-        //delete nginx vhost
+        //delete nginx vhost 'sudo rm -r /etc/nginx/sites-enabled/my-app'
         //delete /homes/user/appname
         //delete /home/user/appname
         //restart nginx

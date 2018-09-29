@@ -9,9 +9,9 @@ def random_string(string_length=10):
 	random = random.replace("-","")
 	return random[0:string_length]
 
-dbuser = random_string()
-dbname = random_string(15)
-userps = random_string(25)
+dbuser = random_string(20)
+dbname = random_string(20)
+userps = random_string(50)
 dbhost = "laravelbuild.com"
 dbport = "3306"
 
