@@ -14,12 +14,16 @@
 					<div class="row">
 						<div class="col-md-4">
 							<div class="form-group pt-2">
-								<label for="inputName">Name</label>
-								<input value="{{ old('name') }}" name="name" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid': '' }}" id="inputName" type="text" placeholder="Your app name">
+								<label for="appname">Name</label>
+								<input id="appName" value="{{ old('name') }}" name="name" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid': '' }}" type="text" placeholder="Your app name">
 
 								@if($errors->has('name'))
 									<p class="text-danger">{{ $errors->first('name') }}</p>
 								@endif
+								<p class="text-success  text-right" id="appNameResponse">
+									<span>appname</span>-{{auth()->user()->username}}
+									.{{ config('app.buildurl') }}
+								</p>
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -151,4 +155,25 @@
 		</form>
 	</div>
 
+@endsection
+
+@section('script')
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$('#appName').keyup(function(){
+			var value = $(this).val().toLowerCase()
+					.replace(/[^\w ]+/g,'')
+					.replace(/ +/g,'-');
+			$('#appNameResponse span').text(value);
+
+			$.post('/api/check/{{ auth()->id() }}', {name:value}, function(data){
+    			$('#appNameResponse').removeClass('text-danger');
+    			$('#appNameResponse').addClass('text-success');
+			}).fail(function(error) {
+				console.log(error);
+    			$('#appNameResponse').addClass('text-danger');
+    			$('#appNameResponse').removeClass('text-success');
+  			});
+		});
+	</script>
 @endsection

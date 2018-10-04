@@ -31,6 +31,7 @@
   <script src="{{ asset('js/bootstrap.min.js') }}" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
   <script>
     const ps = new PerfectScrollbar('#left-sidebar-scroll');
+    @yield('scriptcode')
   </script>
   @yield('script')
   </body>
