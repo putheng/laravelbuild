@@ -22,7 +22,7 @@
 				<br><br><br>
 				@endif
 				<div class="card-footer card-footer-contrast text-muted text-right">
-					Total 0 apps
+					Total {{ auth()->user()->projects()->count() }} apps
 				</div>
 			</div>
 	</div>

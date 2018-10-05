@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="page-head no-padding">
-	<h2 class="page-head-title">Your application name</h2>
 	<nav aria-label="breadcrumb" role="navigation">
 		<ol class="breadcrumb page-head-nav">
 			<li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Home</a></li>

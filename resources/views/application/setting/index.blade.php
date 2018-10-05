@@ -65,9 +65,7 @@
 						<div class="row">
 							<div class="col-md-6">
 								<div class="form-group">
-<textarea class="form-control" rows="30">
-{{ file_get_contents('../.env') }}
-</textarea>
+<textarea class="form-control" rows="20"></textarea>
 								</div>
 
 
