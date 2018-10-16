@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/perfect-scrollbar.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('css/material-design-iconic-font.min.css') }}?v={{ time() }}" type="text/css"/>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}?v={{ time() }}" type="text/css"/>
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}?v={{ time() }}" type="text/css"/>
   </head>
   <body>

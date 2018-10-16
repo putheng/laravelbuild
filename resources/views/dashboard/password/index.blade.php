@@ -33,15 +33,15 @@
 									{{ csrf_field() }}
 									<div class="form-group">
 										<label class="control-label{{ $errors->has('current_password') ? ' text-danger': '' }}">Current password</label>
-										<input name="current_password" type="text" class="form-control form-control-sm{{ $errors->has('current_password') ? ' is-invalid': '' }}">
+										<input name="current_password" type="password" class="form-control form-control-sm{{ $errors->has('current_password') ? ' is-invalid': '' }}">
 										@if($errors->has('current_password'))
 											<p class="text-danger">{{ $errors->first('current_password') }}</p>
 										@endif
 									</div>
 
 									<div class="form-group">
-										<label class="control-label{{ $errors->has('current_password') ? ' text-danger': '' }}">New password</label>
-										<input name="password" type="text" class="form-control form-control-sm{{ $errors->has('current_password') ? ' is-invalid': '' }}">
+										<label class="control-label{{ $errors->has('password') ? ' text-danger': '' }}">New password</label>
+										<input name="password" type="password" class="form-control form-control-sm{{ $errors->has('password') ? ' is-invalid': '' }}">
 										@if($errors->has('password'))
 											<p class="text-danger">{{ $errors->first('password') }}</p>
 										@endif
@@ -49,7 +49,7 @@
 
 									<div class="form-group">
 										<label class="control-label{{ $errors->has('password_confirmation') ? ' text-danger': '' }}">New password again</label>
-										<input name="password_confirmation" type="text" class="form-control form-control-sm{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}">
+										<input name="password_confirmation" type="password" class="form-control form-control-sm{{ $errors->has('password_confirmation') ? ' is-invalid': '' }}">
 										@if($errors->has('password_confirmation'))
 											<p class="text-danger">{{ $errors->first('password_confirmation') }}</p>
 										@endif

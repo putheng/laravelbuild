@@ -11248,7 +11248,7 @@ canvas {
 	line-height: 60px;
 	height: 60px;
 	width: 142px;
-	background-image: url(/images/icons/logo-x.png);
+	background-image: url(/images/logo.png);
 	background-repeat: no-repeat;
 	background-position: 20px center;
 	padding: 0 20px;
@@ -11259,8 +11259,8 @@ canvas {
 @media (-webkit-min-device-pixel-ratio:2),
 (min-resolution:192dpi) {
 	.be-top-header .be-navbar-header .navbar-brand {
-		background-image: url(/images/icons/logo-x.png);
-		background-size: 120px 33px
+		background-image: url(/images/logo.png);
+		background-size: 120px 35px
 	}
 }
 

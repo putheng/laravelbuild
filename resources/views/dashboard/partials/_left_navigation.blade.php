@@ -65,7 +65,7 @@
 						@endif
 						<li class="divider">Settings</li>
 						<li>
-							<a href="#">
+							<a href="{{ route('dashboard.profile') }}">
 								<i class="icon mdi mdi-settings"></i>
 								<span>Account</span>
 							</a>
@@ -103,14 +103,14 @@
 			</div>
 		</div>
 		<div class="progress-widget">
-			<div class="progress-data"><span class="progress-value">{{ auth()->user()->projects()->count() }}/10</span><span class="name">Current Project</span></div>
+			<div class="progress-data"><span class="progress-value">{{ auth()->user()->projects()->count() }}/{{ auth()->user()->limits }}</span><span class="name">Current Project</span></div>
 			<div class="progress">
 				<div class="progress-bar progress-bar-primary" style="width: 0%;"></div>
 			</div>
 		</div>
 		<hr>
 		<div class="card-footer card-footer-contrast text-muted text-center">
-			© {{ date('Y') }} Laravel Space Ltd, <br/>All rights reserved
+			© {{ date('Y') }} Laravel Build Ltd, <br/>All rights reserved
 		</div>
 		<br>
 	</div>
