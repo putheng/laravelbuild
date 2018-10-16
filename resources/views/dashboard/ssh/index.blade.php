@@ -23,7 +23,7 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active show" id="primary" role="tabpanel">
-						<h5>Setup SSH keys to deploy code via Git</h5>
+						<h5>You can register new SSH keys to enable command line access to your apps.</h5>
 
 						<br>
 

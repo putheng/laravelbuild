@@ -27,11 +27,11 @@
 						
 							<div class="row">
 								<div class="col-md-6">
-								<form action="{{ route('dashboard.password') }}" method="post">
+								<form action="{{ route('dashboard.profile.edit') }}" method="post">
 									{{ csrf_field() }}
 									<div class="form-group">
 										<label class="control-label{{ $errors->has('name') ? ' text-danger': '' }}">Name</label>
-										<input name="name" type="text" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid': '' }}">
+										<input value="{{ old('name') ?? auth()->user()->name }}" name="name" type="text" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid': '' }}">
 										@if($errors->has('name'))
 											<p class="text-danger">{{ $errors->first('name') }}</p>
 										@endif
@@ -39,7 +39,7 @@
 
 									<div class="form-group">
 										<label class="control-label{{ $errors->has('phone') ? ' text-danger': '' }}">Phone</label>
-										<input name="phone" type="text" class="form-control form-control-sm{{ $errors->has('phone') ? ' is-invalid': '' }}">
+										<input value="{{ old('phone') ?? optional($profile)->phone }}" name="phone" type="text" class="form-control form-control-sm{{ $errors->has('phone') ? ' is-invalid': '' }}">
 										@if($errors->has('phone'))
 											<p class="text-danger">{{ $errors->first('phone') }}</p>
 										@endif
@@ -47,7 +47,7 @@
 
 									<div class="form-group">
 										<label class="control-label{{ $errors->has('company') ? ' text-danger': '' }}"> Company</label>
-										<input name="company" type="text" class="form-control form-control-sm{{ $errors->has('company') ? ' is-invalid': '' }}">
+										<input value="{{ old('company') ?? optional($profile)->company }}" name="company" type="text" class="form-control form-control-sm{{ $errors->has('company') ? ' is-invalid': '' }}">
 										@if($errors->has('company'))
 											<p class="text-danger">{{ $errors->first('company') }}</p>
 										@endif
@@ -55,7 +55,7 @@
 
 									<div class="form-group">
 										<label class="control-label{{ $errors->has('address') ? ' text-danger': '' }}"> Address</label>
-										<textarea name="address" class="form-control{{ $errors->has('address') ? ' is-invalid': '' }}"></textarea>
+										<textarea name="address" class="form-control{{ $errors->has('address') ? ' is-invalid': '' }}">{{ old('address') ?? optional($profile)->address }}</textarea>
 										@if($errors->has('address'))
 											<p class="text-danger">{{ $errors->first('address') }}</p>
 										@endif

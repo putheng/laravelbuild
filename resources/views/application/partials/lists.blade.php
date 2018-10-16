@@ -17,7 +17,7 @@
 					<tr class="primary">
 						<td class="user-avatar cell-detail user-info">
 							<img src="/images/{{ $project->type }}-logo.png" alt="Avatar">
-							<span>{{ $project->name }}</span>
+							<span><a href="{{ route('app.manage.detail', $project) }}">{{ $project->name }}</a></span>
 							<span class="cell-detail-description">
 							{{ $project->description }}
 							</span>

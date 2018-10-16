@@ -76,13 +76,14 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 Route::group(['prefix' => 'dashboard', 'namespace' => 'Account', 'as' => 'dashboard.', 'middleware' => 'auth'], function(){
 
 	Route::get('/', 'DashboardController@index')->name('index');
-	Route::get('/billing', 'PaymentController@index')->name('billing');
+	Route::get('/billing', 'BillingController@index')->name('billing');
 
 	Route::get('/password', 'PasswordController@index')->name('password');
 	Route::post('/password', 'PasswordController@store');
 
 	Route::get('/account', 'AccountController@index')->name('profile');
 	Route::get('/account/edit', 'AccountController@edit')->name('profile.edit');
+	Route::post('/account/edit', 'AccountController@store');
 	
 	// SSH Keys
 	Route::group(['prefix' => 'ssh', 'as' => 'ssh.'], function(){

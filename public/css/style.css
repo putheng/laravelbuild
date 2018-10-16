@@ -11253,14 +11253,19 @@ canvas {
 	background-position: 20px center;
 	padding: 0 20px;
 	margin: 0;
-	display: block
+	display: block;
+	padding-left: 66px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
+    color: #545454;
 }
 
 @media (-webkit-min-device-pixel-ratio:2),
 (min-resolution:192dpi) {
 	.be-top-header .be-navbar-header .navbar-brand {
-		background-image: url(/images/logo.png);
-		background-size: 120px 35px
+		background-image: url(/images/logo-1.png);
+		background-size: 40px 35px
 	}
 }
 
