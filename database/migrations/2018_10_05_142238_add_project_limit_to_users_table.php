@@ -14,7 +14,7 @@ class AddProjectLimitToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('limits')->default(10);
+            $table->boolean('limits')->default(15);
         });
     }
 

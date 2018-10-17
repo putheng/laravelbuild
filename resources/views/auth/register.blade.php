@@ -18,7 +18,7 @@
         <div class="main-content container-fluid">
           <div class="splash-container sign-up">
             <div class="card card-border-color card-border-color-primary">
-              <div class="card-header"><img class="logo-img" src="{{ asset('images/icons/logo-xx.png') }}" alt="logo" width="102" height="27"><span class="splash-description">Please enter your user information.</span></div>
+              <div class="card-header"><img class="logo-img" src="{{ asset('images/icons/logo-xx-1.png') }}" alt="logo" width="150"><span class="splash-description">Please enter your user information.</span></div>
               <div class="card-body">
                 <form action="{{ route('register') }}" method="post">
                   {{ csrf_field() }}

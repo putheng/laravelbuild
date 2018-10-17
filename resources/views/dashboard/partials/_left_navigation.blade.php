@@ -110,7 +110,7 @@
 		</div>
 		<hr>
 		<div class="card-footer card-footer-contrast text-muted text-center">
-			© {{ date('Y') }} Laravel Build Ltd, <br/>All rights reserved
+			© {{ date('Y') }} Lexscorp Ltd, <br/>All rights reserved
 		</div>
 		<br>
 	</div>

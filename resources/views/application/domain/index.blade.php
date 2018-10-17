@@ -21,11 +21,6 @@
 							Domain Management
 						</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="#subdomain" data-toggle="tab" role="tab" aria-selected="true">
-							Subdomain
-						</a>
-					</li>
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active show" id="primary" role="tabpanel">
@@ -38,24 +33,6 @@
 									<input class="form-control" id="inputEmail" type="email" placeholder="examlpe.com">
 								</div>
 								<input type="submit" class="btn btn-primary" value="Submit">
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane" id="subdomain" role="tabpanel">
-						<h4>Addtional Domain</h4>
-						<div class="row">
-							<div class="col-md-4">
-							@if(true)
-								<div class="form-group pt-2">
-									<label for="inputEmail">Subdomain</label>
-									<input class="form-control" id="inputEmail" type="email" placeholder="sub.examlpe.com">
-								</div>
-								<input type="submit" class="btn btn-primary" value="Add Domain">
-							@else
-								<p>You don't primary domain!</p>
-								<p>Please add your primary domain first before add subdomain</p>
-
-							@endif
 							</div>
 						</div>
 					</div>

@@ -35,7 +35,7 @@
 
 								<br>
 								<h4>Application Url</h4>
-								<a href="http://{{ $project->directory }}.laravelbuild.com" target="_blank">http://{{ $project->directory }}.laravelbuild.com</a>
+								<a href="http://{{ $project->directory }}.laravelbuild.com" target="_blank">{{ $project->directory }}.laravelbuild.com</a>
 								<br><br>
 								<h4>Git repository</h4>
 <pre>
