@@ -24,7 +24,7 @@ class StoreProfileFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string|max:255|unique:users',
+            'name' => 'required|string|max:30|unique:users,name,'. auth()->id(),
             'phone' => 'required|max:20',
             'company' => 'required|max:255',
             'address' => 'required|max:255'

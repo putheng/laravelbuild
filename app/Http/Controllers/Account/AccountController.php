@@ -46,6 +46,6 @@ class AccountController extends Controller
 
         $request->user()->update(['name' => $request->name]);
 
-        return back()->withSuccess('profile successfully updated');
+        return back()->withSuccess('Profile successfully updated');
     }
 }

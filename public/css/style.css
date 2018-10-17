@@ -11256,16 +11256,18 @@ canvas {
 	display: block;
 	padding-left: 66px;
     font-weight: 700;
-    font-size: 15px;
+    font-size: 16px;
     letter-spacing: 1px;
     color: #545454;
+    text-transform: uppercase;
+    
 }
 
 @media (-webkit-min-device-pixel-ratio:2),
 (min-resolution:192dpi) {
 	.be-top-header .be-navbar-header .navbar-brand {
 		background-image: url(/images/logo-1.png);
-		background-size: 40px 35px
+		background-size: 36px 36px
 	}
 }
 
