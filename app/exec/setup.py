@@ -66,9 +66,10 @@ os.system("echo \"git --work-tree=/homes/"+ username +"/"+ appname +" --git-dir=
 
 os.system("chmod +x /home/"+ username +"/"+ appname + ".git/hooks/post-receive")
 
-# Update user dir permission after setup
+# Update user dir /home permission after setup
 os.system("sudo chown -R "+ username +":"+ username +" /home/"+ username)
 
+# Update user dir /homes permission after setup
 os.system("sudo chown -R "+ username +":"+ username +" /homes/"+ username)
 
 
