@@ -21,8 +21,7 @@
 									<p class="text-danger">{{ $errors->first('name') }}</p>
 								@endif
 								<p class="text-success  text-right" id="appNameResponse">
-									<span>appname</span>-{{auth()->user()->username}}
-									.{{ config('app.buildurl') }}
+									<span>appname</span>-{{auth()->user()->username}}.{{ config('app.buildurl') }}
 								</p>
 							</div>
 						</div>

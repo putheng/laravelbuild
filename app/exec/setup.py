@@ -1,27 +1,30 @@
 #!/usr/bin/env python3.5
 import os
-
 import sys
-#sys.argv[0]
+
+username = sys.argv[1]
+appname = sys.argv[2]
+public = sys.argv[3]
+php = sys.argv[4]
 
 ## Clear the console.
 os.system("clear")
 
 os.system("cd ~")
 
-server_parent_dir = "/homes/"+ sys.argv[1];
+server_parent_dir = "/homes/"+ username;
 
 ## Domain directory
-domain_dir = sys.argv[2]
+domain_dir = appname
 
 ## Nginx vhost
-nginxhost = sys.argv[1] +"-"+ sys.argv[2]
+nginxhost = username +"-"+ appname
 
 ## Domain name
-domain = sys.argv[2] +"-"+ sys.argv[1] +".laravelbuild.com"
+domain = appname +"-"+ username +".laravelbuild.com"
 
 ## Chceck and set name of the public directory.
-public_dir = sys.argv[3]
+public_dir = public
 
 ## Creating the Directory Structure
 os.system("sudo mkdir -p "+server_parent_dir+"/"+domain_dir+"/"+public_dir)
@@ -40,7 +43,7 @@ file_object.close()
 
 ## Creating Virtual Host File
 host_file = open("/tmp/"+ nginxhost, "w")
-host_file.write("server {\n\tlisten 80;\n\n\troot "+ server_parent_dir +"/"+ domain_dir +"/"+ public_dir +";\n\tindex index.php index.html;\n\n\tserver_name "+ domain +";\n\n\tlocation ~* \.php$ {\n\t\tfastcgi_pass "+ sys.argv[4] +";\n\t\tfastcgi_index	index.php;\n\t\tinclude			fastcgi_params;\n\t\tfastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;\n\t\tfastcgi_param   SCRIPT_NAME        $fastcgi_script_name;\n\t}\n}")
+host_file.write("server {\n\tlisten 80;\n\n\troot "+ server_parent_dir +"/"+ domain_dir +"/"+ public_dir +";\n\tindex index.php index.html;\n\n\tserver_name "+ domain +";\n\n\tlocation ~* \.php$ {\n\t\tfastcgi_pass "+ php +";\n\t\tfastcgi_index	index.php;\n\t\tinclude			fastcgi_params;\n\t\tfastcgi_param   SCRIPT_FILENAME    $document_root$fastcgi_script_name;\n\t\tfastcgi_param   SCRIPT_NAME        $fastcgi_script_name;\n\t}\n}")
 host_file.close()
 os.system("sudo mv \"/tmp/"+ nginxhost +"\" \"/etc/nginx/sites-available/\"")
 
@@ -51,17 +54,20 @@ os.system("sudo ln -s /etc/nginx/sites-available/"+nginxhost+" /etc/nginx/sites-
 os.system("sudo service nginx restart")
 
 ### Setup git
-os.system("sudo mkdir -p /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git")
+os.system("sudo mkdir -p /home/"+ username +"/"+ appname + ".git")
 
-os.system("git init --bare /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git")
+os.system("git init --bare /home/"+ username +"/"+ appname + ".git")
 
-os.system("touch /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
+os.system("touch /home/"+ username +"/"+ appname + ".git/hooks/post-receive")
 
-os.system("echo \"#!/bin/sh\" >> /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
+os.system("echo \"#!/bin/sh\" >> /home/"+ username +"/"+ appname + ".git/hooks/post-receive")
 
-os.system("echo \"git --work-tree=/homes/"+ sys.argv[1] +"/"+ sys.argv[2] +" --git-dir=/home/"+ sys.argv[1] +"/"+ sys.argv[2] +".git checkout -f\" >> /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
+os.system("echo \"git --work-tree=/homes/"+ username +"/"+ appname +" --git-dir=/home/"+ username +"/"+ appname +".git checkout -f\" >> /home/"+ username +"/"+ appname + ".git/hooks/post-receive")
 
-os.system("chmod +x /home/"+ sys.argv[1] +"/"+ sys.argv[2] + ".git/hooks/post-receive")
+os.system("chmod +x /home/"+ username +"/"+ appname + ".git/hooks/post-receive")
+
+os.system("sudo chown -R "+ username +":"+ username +" /home/"+ username)
+os.system("sudo chown -R "+ username +":"+ username +" /homes/"+ username)
 
 
 
