@@ -150,4 +150,29 @@ php /var/www/html/default/artisan key:generate
 php /var/www/html/default/artisan migrate
 php /var/www/html/default/artisan db:seed
 
+echo "\nSetup Git"
+
+mkdir -p /home/index.git
+
+git init --bare /home/index.git
+
+touch /home/index.git/hooks/post-receive
+
+echo -e '#!/bin/sh' > /home/index.git/hooks/post-receive
+
+echo "git --work-tree=/var/www/html/default --git-dir=/home/index.git checkout -f" >> /home/index.git/hooks/post-receive
+
+sudo chmod +x /home/index.git/hooks/post-receive
+
+echo "\ngit remote add live root@lexscorp.com:home/index.git"
+
+
+
+
+
+
+
+
+
+
 

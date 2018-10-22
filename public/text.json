@@ -1,0 +1,70 @@
+{
+type: "interactive_message",
+actions: [
+{
+name: "approval",
+type: "button",
+value: "approve"
+}
+],
+callback_id: "aprq",
+team: {
+id: "TCDTENTL7",
+domain: "renetcambodia"
+},
+channel: {
+id: "CDJ9DKCFQ",
+name: "approval_request"
+},
+user: {
+id: "UCC9S0V4Z",
+name: "putheng"
+},
+action_ts: "1540200604.061626",
+message_ts: "1540196802.000100",
+attachment_id: "1",
+token: "8b48mZmM48ITFFncMgSEGiF3",
+is_app_unfurl: false,
+original_message: {
+text: "<@UCCBRCTCZ><@UCFNQ3XRU> *Your approval is requested to make an offer to* <@UCC9S0V4Z>",
+bot_id: "BDGR52M6F",
+attachments: [
+{
+callback_id: "aprq",
+fallback: "You are unable to approve",
+text: "I would like to request your approval for my leave *Go out* Go to PC Shop *Out* :22-Oct-2018 08:00 AM *In* :22-Oct-2018 17:00 PM ",
+id: 1,
+color: "3AA3E3",
+actions: [
+{
+id: "1",
+name: "approval",
+text: "Approval",
+type: "button",
+value: "approve",
+style: "primary"
+},
+{
+id: "2",
+name: "approval",
+text: "Reject",
+type: "button",
+value: "reject",
+style: "danger",
+confirm: {
+text: "Would you like to reject this request?",
+title: "Are you sure?",
+ok_text: "Yes",
+dismiss_text: "No"
+}
+}
+]
+}
+],
+type: "message",
+subtype: "bot_message",
+ts: "1540196802.000100"
+},
+response_url: "https://hooks.slack.com/actions/TCDTENTL7/460675095857/ZGiHY8PoEASiYUY2EIG9wb5i",
+trigger_id: "462333595399.421932775687.09b3c658d2b6075b5ad4166491169e66"
+}
