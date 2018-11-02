@@ -12,6 +12,7 @@ def random_string(string_length=10):
 dbuser = random_string(20)
 dbname = random_string(20)
 userps = random_string(50)
+
 dbhost = "laravelbuild.com"
 dbport = "3306"
 

@@ -61,7 +61,7 @@
 								</div>
 								<input type="submit" class="btn btn-success btn-lg text-uppercase" value="submit">
 								&nbsp;&nbsp;
-								<a href="{{ route('app.manage.ssl.index') }}" class="btn btn-info btn-lg text-uppercase">back</a>
+								<a href="{{ route('app.manage.ssl.index', $project) }}" class="btn btn-info btn-lg text-uppercase">back</a>
 								<br><br>
 							</div>
 						</div>
