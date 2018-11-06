@@ -13,20 +13,24 @@ dbuser = random_string(20)
 dbname = random_string(20)
 userps = random_string(50)
 
-dbhost = "laravelbuild.com"
+dbhost = "lexscorp.com"
 dbport = "3306"
 
-createdb = "mysql -u'root' -p'root' -e \"CREATE DATABASE "+ dbname +"\"; "
+rootuser = sys.argv[3]
+rootpassword = sys.argv[4]
+rootdatabase = sys.argv[5]
 
-createlocal = "mysql -u'root' -p'root' -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
+createdb = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE DATABASE "+ dbname +"\"; "
 
-createremote = "mysql -u'root' -p'root' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
+createlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantlocal = "mysql -u'root' -p'root' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
+createremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantremote = "mysql -u'root' -p'root' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
+grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
 
-flush = "mysql -u'root' -p'root' -e \"FLUSH PRIVILEGES\"; "
+grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
+
+flush = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"FLUSH PRIVILEGES\"; "
 
 os.system(createdb)
 os.system(createlocal)
@@ -35,7 +39,7 @@ os.system(grantlocal)
 os.system(grantremote)
 os.system(flush)
 
-insert = "mysql -u'srphlaravelspaces' -p'ph012916956!' -e \"INSERT INTO build_database.databases (user_id, project_id, username, password, dbname, host, port) VALUES ('"+ sys.argv[1] +"', '"+ sys.argv[2] +"', '"+ dbuser +"', '"+ userps +"', '"+ dbname +"', '"+ dbhost +"', '"+ dbport +"') \"; "
+insert = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"INSERT INTO "+ rootdatabase +".databases (user_id, project_id, username, password, dbname, host, port) VALUES ('"+ sys.argv[1] +"', '"+ sys.argv[2] +"', '"+ dbuser +"', '"+ userps +"', '"+ dbname +"', '"+ dbhost +"', '"+ dbport +"') \"; "
 
 os.system(insert)
 

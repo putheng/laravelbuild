@@ -21,7 +21,7 @@ domain_dir = appname
 nginxhost = username +"-"+ appname
 
 ## Domain name
-domain = appname +"-"+ username +".laravelbuild.com"
+domain = appname +"-"+ username +".lexscorp.com"
 
 ## Chceck and set name of the public directory.
 public_dir = public

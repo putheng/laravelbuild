@@ -35,27 +35,27 @@
 
 								<br>
 								<h4>Application Url</h4>
-								<a href="http://{{ $project->directory }}.laravelbuild.com" target="_blank">{{ $project->directory }}.laravelbuild.com</a>
+								<a href="http://{{ $project->directory }}.{{ env('APP_BUILD_URL') }}" target="_blank">{{ $project->directory }}.{{ env('APP_BUILD_URL') }}</a>
 								<br><br>
 								<h4>Git repository</h4>
 <pre>
-git@laravelbuild.com:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
+git@lexscorp:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
 </pre>
 <br>
 <h4>Create a new repository on the command line</h4>
 <pre>
-echo "# api" >> README.md
+echo "# {{ $project->gitname }}" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin git@github.com:putheng/api.git
-git push -u origin master
+git remote add live git@lexscorp.com:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
+git push -u live master
 </pre>
 <br>
 <h4>Push an existing repository from the command line</h4>
 <pre>
-git remote add origin git@github.com:putheng/api.git
-git push -u origin master
+git remote add live git@lexscorp.com:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
+git push -u live master
 </pre>
 
 								<br><br>
