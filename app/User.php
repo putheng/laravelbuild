@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\Models\{Project, Profile};
+use App\Models\{Project, Profile, SSH};
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -36,6 +36,11 @@ class User extends Authenticatable
     public function profile()
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function ssh()
+    {
+        return $this->hasMany(SSH::class);
     }
 
 }

@@ -39,7 +39,7 @@
 								<br><br>
 								<h4>Git repository</h4>
 <pre>
-git@lexscorp:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
+{{ str_slug(request()->user()->name) }}@lexscorp:{{ $project->gitname }}.git
 </pre>
 <br>
 <h4>Create a new repository on the command line</h4>
@@ -48,13 +48,13 @@ echo "# {{ $project->gitname }}" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add live git@lexscorp.com:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
+git remote add live {{ str_slug(request()->user()->name) }}@lexscorp.com:{{ $project->gitname }}.git
 git push -u live master
 </pre>
 <br>
 <h4>Push an existing repository from the command line</h4>
 <pre>
-git remote add live git@lexscorp.com:{{ str_slug(request()->user()->name) }}/{{ $project->gitname }}.git
+git remote add live {{ str_slug(request()->user()->name) }}@lexscorp.com:{{ $project->gitname }}.git
 git push -u live master
 </pre>
 

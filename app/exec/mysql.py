@@ -26,9 +26,9 @@ createlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER 
 
 createremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost'\"; "
+grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost' IDENTIFIED BY '$mysqlpassword' WITH GRANT OPTION\"; "
 
-grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%'\"; "
+grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%' IDENTIFIED BY '$mysqlpassword' WITH GRANT OPTION\"; "
 
 flush = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"FLUSH PRIVILEGES\"; "
 
@@ -42,9 +42,3 @@ os.system(flush)
 insert = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"INSERT INTO "+ rootdatabase +".databases (user_id, project_id, username, password, dbname, host, port) VALUES ('"+ sys.argv[1] +"', '"+ sys.argv[2] +"', '"+ dbuser +"', '"+ userps +"', '"+ dbname +"', '"+ dbhost +"', '"+ dbport +"') \"; "
 
 os.system(insert)
-
-#print("MySQL user created." + insert)
-#print("Databse :   "+  dbname)
-#print("Username:   "+ dbuser)
-#print("Password:   "+ userps)
-

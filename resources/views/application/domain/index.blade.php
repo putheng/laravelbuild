@@ -24,21 +24,86 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active show" id="primary" role="tabpanel">
-						<h4>Point domain to your app</h4>
-
+						<h5>New Domain</h5>
+					@if($project->domains()->count() <= 4)
 						<div class="row">
 							<div class="col-md-4">
-								<div class="form-group pt-2">
-									<label for="inputEmail">Primary Domain</label>
-									<input class="form-control" id="inputEmail" type="email" placeholder="examlpe.com">
+							<form action="{{ route('app.manage.domain', $project) }}" method="post">
+								{{ csrf_field() }}
+								<div class="input-group input-group-sm mb-3">
+									<input name="domain" value="{{ old('domain') }}" class="form-control{{ $errors->has('domain') ? ' is-invalid' : '' }}" type="text" placeholder="yourdomain.com">
+									<div class="input-group-append">
+										<button class="btn btn-primary" type="submit">Submit</button>
+									</div>
 								</div>
-								<input type="submit" class="btn btn-primary" value="Submit">
+								@if($errors->has('domain'))
+									<p class="text-danger">{{ $errors->first('domain') }}</p>
+								@endif
+							</form>
 							</div>
 						</div>
+					@endif
+
+						@if($project->domains()->count())
+						<br><br>
+						<div class="row">
+							<div class="col-md-6">
+								<table class="table">
+									<thead>
+										<th>Domain Name</th>
+										<th>DNS Target</th>
+										<th>&nbsp;</th>
+									</thead>
+									<tbody>
+									@foreach($project->domains()->orderBy('id', 'desc')->get() as $domain)
+										<tr>
+											<td>
+												{{ $domain->domain }}
+												<a href="//{{ $domain->domain }}" target="_blank">
+													<span class="mdi mdi-open-in-new"></span>
+												</a>
+											</td>
+											<td>{{ $domain->domain }}.lexsdns.com</td>
+											<td>
+												<a href="#">
+													<span onclick="deleteConfirmation('{{ $domain->domain }}')" class="mdi mdi-close-circle-o"></span>
+												</a>
+												<form id="delete_form_{{ $domain->domain }}" 
+														action="{{ route('app.manage.domain.destroy', [$project, $domain]) }}" 
+														method="POST" 
+														style="display: none;">
+														{{ method_field('DELETE') }}
+		                                        	@csrf
+
+		                                    	</form>
+											</td>
+										</tr>
+									@endforeach
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<hr>
+						<h5>
+							<strong>DNS Target</strong><br>
+							Supply this to your DNS provider for the destination of CNAME or ALIAS records
+						</h5>
+						@endif
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+@endsection
+@section('script')
+<script type="text/javascript">
+function deleteConfirmation(domain) {
+	event.preventDefault();
+	if(confirm("Are you sure you want to "+ domain +"?")){
+		document.getElementById("delete_form_"+ domain).submit();
+	}
+}
+</script>
 @endsection

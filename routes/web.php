@@ -40,6 +40,8 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 	Route::group(['prefix' => 'manage/{project}', 'as' => 'manage.'], function(){
 
 		Route::get('domain', 'DomainController@index')->name('domain');
+		Route::post('domain', 'DomainController@store');
+		Route::delete('domain/{domain}', 'DomainController@destroy')->name('domain.destroy');
 
 		Route::get('setting', 'SettingController@index')->name('setting');
 		Route::post('setting/delete/', 'SettingController@destroy')->name('destroy');
@@ -78,8 +80,12 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Account', 'as' => 'dashbo
 	Route::group(['prefix' => 'ssh', 'as' => 'ssh.'], function(){
 
 		Route::get('/', 'SSHController@index')->name('index');
+
 		Route::get('/add', 'SSHController@generate')->name('generate');
-		Route::get('/view', 'SSHController@view')->name('view');
+		Route::post('/add', 'SSHController@store');
+
+		Route::get('/view/{ssh}', 'SSHController@view')->name('view');
+		Route::post('/view/{ssh}', 'SSHController@update');
 
 	});
 

@@ -5,7 +5,7 @@
 	<nav aria-label="breadcrumb" role="navigation">
 		<ol class="breadcrumb page-head-nav">
 			<li class="breadcrumb-item"><a href="{{ route('dashboard.index') }}">Home</a></li>
-			<li class="breadcrumb-item"><a href="{{ route('app.lists') }}">Applications</a></li>
+			<li class="breadcrumb-item"><a href="{{ route('app.lists') }}">Blocks</a></li>
 		</ol>
 	</nav>
 </div>
@@ -23,11 +23,11 @@
 				</ul>
 				<div class="tab-content">
 					<div class="tab-pane active show" id="primary" role="tabpanel">
-						<h5>You can register new SSH keys to enable command line access to your apps.</h5>
+						<h5>You can register new SSH keys to enable command line access to your blocks.</h5>
 
 						<br>
 
-						@if(true)
+						@if($keys->count())
 							<div class="row">
 								<div class="col-md-6">
 									<table class="table table-bordered table-striped">
@@ -37,19 +37,21 @@
 											<th class="text-center">Action</th>
 										</thead>
 										<tbody>
+										@foreach($keys as $key)
 											<tr>
-												<td>SSH primary</td>
-												<td>20-july-2018</td>
+												<td>{{ $key->name }}</td>
+												<td>{{ $key->created_at->format('d-M-Y') }}</td>
 												<td class="text-center">
 													<a href="#" class="btn btn-danger btn-sm">Delete</a>
 													&nbsp; &nbsp;
-													<a href="{{ route('dashboard.ssh.view') }}" class="btn btn-info btn-sm">View</a>
+													<a href="{{ route('dashboard.ssh.view', $key) }}" class="btn btn-info btn-sm">View</a>
 												</td>
 											</tr>
+										@endforeach
 										</tbody>
 									</table>
 									<br>
-									<a href="{{ route('dashboard.ssh.generate') }}" class="btn btn-info">Generate new SSH</a>
+									<a href="{{ route('dashboard.ssh.generate') }}" class="btn btn-info">New SSH key</a>
 								</div>
 							</div>
 						@else
@@ -58,7 +60,7 @@
 						<br>
 
 						<br>
-						<a href="{{ route('dashboard.ssh.generate') }}" class="btn btn-success btn-lg text-uppercase">generate ssh keys </a>
+						<a href="{{ route('dashboard.ssh.generate') }}" class="btn btn-success btn-lg text-uppercase">New SSH key</a>
 						<br><br>
 						<br>
 

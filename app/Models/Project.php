@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use App\User;
-use App\Models\Database;
+use App\Models\{Database, Domain};
 use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
@@ -32,6 +32,11 @@ class Project extends Model
     public function plan()
     {
     	return $this->belongsTo(Plan::class);
+    }
+
+    public function domains()
+    {
+        return $this->hasMany(Domain::class);
     }
     
 }

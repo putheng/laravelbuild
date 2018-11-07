@@ -30,20 +30,28 @@
 						
 							<div class="row">
 								<div class="col-md-6">
+								<form action="{{ route('dashboard.ssh.generate') }}" method="post">
+									{{ csrf_field() }}
 									<div class="form-group">
-										<label class="control-label">Name</label>
-										<input type="text" class="form-control form-control-sm" placeholder="SSH name ...">
+										<label class="control-label{{ $errors->has('name') ? ' text-danger' : '' }}">Name</label>
+										<input name="name" type="text" class="form-control form-control-sm{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="SSH name ..." value="{{ old('name') }}">
+										@if($errors->has('name'))
+											<p class="text-danger">{{ $errors->first('name') }}</p>
+										@endif
 									</div>
 
 									<div class="form-group">
-										<label class="control-label">SSH Keys</label>
-										<textarea rows="4" class="form-control"></textarea>
+										<label class="control-label{{ $errors->has('key') ? ' text-danger' : '' }}">SSH Keys</label>
+										<textarea name="key" rows="4" class="form-control{{ $errors->has('key') ? ' is-invalid' : '' }}">{{ old('key') }}</textarea>
+										@if($errors->has('key'))
+											<p class="text-danger">{{ $errors->first('key') }}</p>
+										@endif
 									</div>
 
 									<input type="submit" value="Submit" class="btn btn-primary">
 									&nbsp;&nbsp;
 									<a href="{{ route('dashboard.ssh.index') }}" class="btn btn-danger">Cancel</a>
-
+								</form>
 								</div>
 							</div>
 						

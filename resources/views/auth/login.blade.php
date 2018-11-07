@@ -27,7 +27,7 @@
               <form action="{{ route('login') }}" method="post">
                 @csrf
                 <div class="form-group">
-                  <input name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" type="text" placeholder="email" autocomplete="off">
+                  <input name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" type="text" placeholder="Email" autocomplete="off">
                   @if($errors->has('email'))
                       <p class="text-danger">{{ $errors->first('email') }}</p>
                   @endif

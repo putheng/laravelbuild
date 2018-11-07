@@ -30,20 +30,22 @@
 						
 							<div class="row">
 								<div class="col-md-6">
+								<form action="{{ route('dashboard.ssh.view', $ssh) }}" method="post">
+									{{ csrf_field() }}
 									<div class="form-group">
 										<label class="control-label">Name</label>
-										<input type="text" class="form-control form-control-sm" placeholder="SSH name ...">
+										<input name="name" type="text" class="form-control form-control-sm" placeholder="SSH name ..." value="{{ $ssh->name }}">
 									</div>
 
 									<div class="form-group">
 										<label class="control-label">SSH Keys</label>
-										<textarea rows="4" class="form-control"></textarea>
+										<textarea name="key" rows="4" class="form-control">{{ $ssh->key }}</textarea>
 									</div>
 
 									<input type="submit" value="Update" class="btn btn-primary">
 									&nbsp;&nbsp;
 									<a href="{{ route('dashboard.ssh.index') }}" class="btn btn-danger">Cancel</a>
-
+								</form>
 								</div>
 							</div>
 						
