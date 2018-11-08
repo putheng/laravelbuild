@@ -35,7 +35,7 @@ class ProcessDatabase implements ShouldQueue
      */
     public function handle()
     {
-        $mysql = config('database.connections.mysql.username') ." ". config('database.connections.mysql.password') ." ". config('database.connections.mysql.database');
+        $mysql = "root ". config('database.connections.mysql.root_password') ." ". config('database.connections.mysql.database');
 
         $process = new Process("python3.5 /var/www/html/default/app/exec/mysql.py {$this->userid} {$this->appid} {$mysql}");
         $process->run();
