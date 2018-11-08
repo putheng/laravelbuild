@@ -26,9 +26,9 @@ createlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER 
 
 createremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost' IDENTIFIED BY '$mysqlpassword' \"; "
+grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost' IDENTIFIED BY '$mysqlpassword' WITH GRANT OPTION\"; "
 
-grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+  dbname +".* TO '"+ dbuser +"'@'%' IDENTIFIED BY '$mysqlpassword'\"; "
+grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+  dbname +".* TO '"+ dbuser +"'@'%' IDENTIFIED BY '$mysqlpassword' WITH GRANT OPTION\"; "
 
 flush = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"FLUSH PRIVILEGES\"; "
 
