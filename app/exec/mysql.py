@@ -20,15 +20,15 @@ rootuser = sys.argv[3]
 rootpassword = sys.argv[4]
 rootdatabase = sys.argv[5]
 
-createdb = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE DATABASE "+ dbname +"\"; "
+createdb = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE DATABASE "+ dbname +" DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci\"; "
 
 createlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER '"+ dbuser +"'@'localhost' IDENTIFIED BY '"+ userps +"'\"; "
 
 createremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"CREATE USER '"+ dbuser +"'@'%' IDENTIFIED BY '"+ userps +"'\"; "
 
-grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost' IDENTIFIED BY '$mysqlpassword' WITH GRANT OPTION\"; "
+grantlocal = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+ dbname +".* TO '"+ dbuser +"'@'localhost' IDENTIFIED BY '$mysqlpassword' \"; "
 
-grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL ON "+  dbname +".* TO '"+ dbuser +"'@'%' IDENTIFIED BY '$mysqlpassword' WITH GRANT OPTION\"; "
+grantremote = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"GRANT ALL PRIVILEGES ON "+  dbname +".* TO '"+ dbuser +"'@'%' IDENTIFIED BY '$mysqlpassword'\"; "
 
 flush = "mysql -u'"+ rootuser +"' -p'"+ rootpassword +"' -e \"FLUSH PRIVILEGES\"; "
 
