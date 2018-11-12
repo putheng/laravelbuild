@@ -17,4 +17,9 @@ class CertificateController extends Controller
     {
     	return view('application.ssl.generate', compact('project'));
     }
+
+    public function store(Request $request)
+    {
+    	
+    }
 }

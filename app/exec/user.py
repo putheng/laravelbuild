@@ -7,10 +7,10 @@ username = sys.argv[1]
 os.system("sudo mkdir -p /home/"+ username)
 # Create user home/user directory
 
-os.system('useradd -m -d /home/'+ username +' '+ username +'')
+os.system('sudo useradd -m -d /home/'+ username +' '+ username +'')
 # Create user and assign home directory
 
-os.system("usermod -a -G git "+ username)
+#os.system("sudo usermod -a -G git "+ username)
 # Assign user to Git group
 
 os.system("sudo chown -R "+ username +":"+ username +" /home/"+ username)

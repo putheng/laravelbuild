@@ -53,7 +53,9 @@ Route::group(['prefix' => 'application', 'namespace' => 'Project', 'as' => 'app.
 		Route::group(['prefix' => 'ssl', 'as' => 'ssl.'], function(){
 
 			Route::get('/', 'CertificateController@index')->name('index');
+
 			Route::get('/generate', 'CertificateController@generate')->name('create');
+			Route::post('/generate', 'CertificateController@store')->name('create');
 
 		});
 
