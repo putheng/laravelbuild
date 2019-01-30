@@ -11248,7 +11248,7 @@ canvas {
 	line-height: 60px;
 	height: 60px;
 	width: 142px;
-	background-image: url(/images/logo.png);
+	background-image: url(/images/icons/logo-xx-1.png);
 	background-repeat: no-repeat;
 	background-position: 20px center;
 	padding: 0 20px;
@@ -11261,7 +11261,7 @@ canvas {
     color: #545454;
     text-transform: uppercase;
     text-shadow: 2px 2px 3px rgba(255,255,255,0.5);
-    
+    background-size: 120px;
 }
 
 @media (-webkit-min-device-pixel-ratio:2),

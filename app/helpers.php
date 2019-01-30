@@ -1,5 +1,33 @@
 <?php
 
+function getPlanClass($id)
+{
+	if($id == 1){
+		return 'primary';
+	}elseif($id == 2){
+		return 'warning';
+	}elseif($id == 3){
+		return 'success';
+	}elseif($id == 4){
+		return 'danger';
+	}
+
+	return 'primary';
+}
+
+function getPlanSpace($id)
+{
+	if($id == 1){
+		return 'primary';
+	}elseif($id == 2){
+		return 'warning';
+	}elseif($id == 3){
+		return 'success';
+	}elseif($id == 4){
+		return 'danger';
+	}
+}
+
 if(!function_exists('string_exists'))
 {
 	function string_exists($string, $array)

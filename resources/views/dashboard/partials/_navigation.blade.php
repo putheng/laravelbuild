@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="be-navbar-header">
     <a class="navbar-brand" href="{{ route('dashboard.index') }}">
-      lexscorp
+      
     </a>
   </div>
   <div class="be-right-navbar">

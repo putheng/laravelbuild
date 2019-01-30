@@ -61,88 +61,32 @@
 					</div>
 
 					<div class="row pricing-tables">
-						<div class="col-lg-3">
-							<div class="pricing-table pricing-table-primary">
-								
-								<div class="pricing-table-title">Free</div>
-								<div class="card-divider card-divider-xl"></div>
-								<div class="pricing-table-price">
-									<span class="currency">$</span>
-									<span class="value">0</span>
-									<span class="frecuency">/mo</span>
-								</div>
-								<ul class="pricing-table-features">
-									<li>100 MB Space</li>
-									<li>10,000 MySql row</li>
-								</ul>
+						@foreach(\App\Models\Plan::get() as $key => $plan)
+							<div class="col-lg-3">
+								<div class="pricing-table pricing-table-{{ getPlanClass($plan->id) }}">
+									<div class="pricing-table-title">{{ $plan->name }}</div>
+									<div class="card-divider card-divider-xl"></div>
+									<div class="pricing-table-price">
+										<span class="currency">$</span>
+										<span class="value">{{ $plan->price }}</span>
+										<span class="frecuency">/mo</span>
+									</div>
+									<ul class="pricing-table-features">
+										<li>{{ $plan->space }} Space</li>
+										<li>{{ $plan->database }} MySql row</li>
+										@if($key != 0)
+											<li>Custom domain</li>
+											<li>Custom SSL</li>
+										@endif
+									</ul>
 
-								<input id="free" checked class="hidden style" type="radio" name="plan" value="1" />
-								<label for="free" class="btn btn-info">Select</label>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="pricing-table pricing-table-warning">
-								
-								<div class="pricing-table-title">Starter</div>
-								<div class="card-divider card-divider-xl"></div>
-								<div class="pricing-table-price">
-									<span class="currency">$</span>
-									<span class="value">1.<small>00</small></span>
-									<span class="frecuency">/mo</span>
+									<input id="{{ str_slug($plan->name) }}" {{ $plan->id == 1 ? 'checked' : '' }} class="hidden style" type="radio" name="plan" value="{{ $plan->id }}" />
+									<label for="{{ str_slug($plan->name) }}" class="btn btn-info">Select</label>
 								</div>
-								<ul class="pricing-table-features">
-									<li>1 GB Space</li>
-									<li>200,000 MySql row</li>
-									<li>Custom domain</li>
-									<li>Custom SSL</li>
-								</ul>
-
-								<input id="starter" class="hidden style" type="radio" name="plan" value="2">
-								<label for="starter" class="btn btn-info">Select</label>
 							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="pricing-table pricing-table-success">
-								
-								<div class="pricing-table-title">Developer</div>
-								<div class="card-divider card-divider-xl"></div>
-								<div class="pricing-table-price">
-									<span class="currency">$</span>
-									<span class="value">3.<small>99</small></span>
-									<span class="frecuency">/mo</span>
-								</div>
-								<ul class="pricing-table-features">
-									<li>5 GB space</li>
-									<li>Unlimited MySql</li>
-									<li>Custom domain</li>
-									<li>Custom SSL</li>
-								</ul>
+						@endforeach
+						
 
-								<input id="developer" class="hidden style" type="radio" name="plan" value="3">
-								<label for="developer" class="btn btn-info">Select</label>
-							</div>
-						</div>
-						<div class="col-lg-3">
-							<div class="pricing-table pricing-table-danger">
-								
-								<div class="pricing-table-title">Business</div>
-								<div class="card-divider card-divider-xl"></div>
-								<div class="pricing-table-price">
-									<span class="currency">$</span>
-									<span class="value">7.<small>99</small></span>
-									<span class="frecuency">/mo</span>
-								</div>
-								<ul class="pricing-table-features">
-									<li>10 GB space</li>
-									<li>Unlimited MySql</li>
-									<li>Custom domain</li>
-									<li>Custom SSL</li>
-								</ul>
-
-								<input id="business" class="hidden style" type="radio" name="plan" value="4">
-								<label for="business" class="btn btn-info">Select</label>
-							</div>
-						</div>
 					</div>
 					<p>Please select your app size. You can always scale your app size whenever required</p>
 				</div>
